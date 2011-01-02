@@ -2,12 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-[ -x /usr/bin/serve-branches ] || exit 0
-
-[ ! -f /etc/loggerhead/serve-branches.conf ] && exit 0
-
-. /etc/loggerhead/serve-branches.conf
-
 inherit eutils distutils versionator
 
 PV_BASE=$(get_version_component_range 1-2)

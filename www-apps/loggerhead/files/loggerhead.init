@@ -23,7 +23,7 @@ start() {
 														--start \
 														--start_as /usr/bin/serve-branches  \
 														--chuid loggerhead \
-														--chdir ${loggerhead_branches}-- --log-folder ${LOG_FOLDER} \
+														--chdir ${loggerhead_branches} -- --log-folder ${LOG_FOLDER} \
 														--prefix= ${loggerhead_prefix} \
 														--port= ${loggerhead_port} \	
 														${LOGGERHEAD_OPTIONS} \
