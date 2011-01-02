@@ -1,0 +1,27 @@
+#!/sbin/runscript
+# Copyright 1999-2011 Gentoo Foundation
+# Distributed under the terms of the GNU General Public License v2
+# $Header: $
+
+PIDFILE=/var/run/loggerhead.pid
+LOGDIR=/var/log/loggerhead
+
+depend() {
+	need net
+}
+
+start() {
+	ebegin "Starting loggerhead"
+	start-stop-daemon --start --quiet --background \
+		--make-pidfile --pidfile ${PIDFILE} \
+		--exec /usr/bin/serve-branches -- --log-folder=${LOGDIR} \
+		${LOGGERHEAD_OPTS}
+	eend $?
+}
+
+stop() {
+	ebegin "Stopping loggerhead"
+	start-stop-daemon --stop --quiet \
+		--pidfile ${PIDFILE}
+	eend $?
+}
