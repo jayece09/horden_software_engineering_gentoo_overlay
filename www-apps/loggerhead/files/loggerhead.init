@@ -9,11 +9,13 @@ PID_FILE=/var/run/$NAME.pid
 SCRIPT_NAME=/etc/init.d/$NAME
 LOG_FOLDER=/var/log/$NAME
 
+# Gracefully exit if the package has been removed
 [ -x /usr/bin/serve-branches ] || exit 0
 
-depend() {
-	need net
-}
+# Check if configuration file is present
+[ ! -f /etc/serve-branches.conf ] && exit 0
+
+. /etc/serve-branches.conf
 
 start() {
 	ebegin "Starting loggerhead"
