@@ -35,9 +35,6 @@ pkg_setup() {
 
 src_install() {
 	distutils_src_install
-	
 	newinitd "${FILESDIR}"/loggerhead.init loggerhead
-	
-	insinto /etc/loggerhead/
-	newins "${FILESDIR}/serve-branches.conf" serve-branches.conf || die
+	newconfd "${FILESDIR}"/loggerhead.confd loggerhead
 }

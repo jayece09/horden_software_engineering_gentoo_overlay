@@ -1,0 +1,7 @@
+LOGGERHEAD_BRANCHES=/srv/bzr
+LOGGERHEAD_PREFIX=/loggerhead
+LOGGERHEAD_PORT=8080
+
+# Additional options for Loggerhead start
+LOGGERHEAD_OPTIONS=""
+
