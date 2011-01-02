@@ -3,7 +3,6 @@
 # $Header: $
 
 PYTHON_DEPEND="2:2.7"
-RESTRICT_PYTHON_ABIS="3.*"
 
 inherit distutils python versionator
 
