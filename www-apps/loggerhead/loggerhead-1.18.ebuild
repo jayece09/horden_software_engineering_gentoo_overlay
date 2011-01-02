@@ -30,6 +30,14 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}"/"${PN}"-"${PV}"
 
+pkg_setup() {
+	python_set_active_version 3
+}
+
+src_prepare() {
+	python_convert_shebangs -q -r 3 .
+}
+
 src_install() {
 	distutils_src_install
 	newinitd "${FILESDIR}"/loggerhead.init loggerhead
