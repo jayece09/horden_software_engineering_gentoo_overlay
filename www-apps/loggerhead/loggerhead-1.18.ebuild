@@ -2,9 +2,7 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-PYTHON_DEPEND="2:2.7"
-
-inherit distutils python versionator
+inherit distutils versionator
 
 PV_BASE=$(get_version_component_range 1-2)
 
