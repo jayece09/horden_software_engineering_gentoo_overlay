@@ -12,11 +12,6 @@ LOG_FOLDER=/var/log/${NAME}
 # Gracefully exit if the package has been removed
 [ -x /usr/bin/serve-branches ] || exit 0
 
-# Check if configuration file is present
-[ ! -f /etc/serve-branches.conf ] && exit 0
-
-. /etc/serve-branches.conf
-
 start() {
 	ebegin "Starting loggerhead"
 	
@@ -25,7 +20,6 @@ start() {
 														--background \
 														--start \
 														--exec /usr/bin/serve-branches  -- --log-folder ${LOG_FOLDER} \
-														--port 
 														${LOGGERHEAD_OPTIONS}
 														# 2>/dev/null
 	eend $?
