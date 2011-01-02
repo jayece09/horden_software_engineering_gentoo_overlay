@@ -3,8 +3,8 @@
 # $Header: $
 
 EAPI="3"
-PYTHON_DEPEND="3:3.1:3.2"
-RESTRICT_PYTHON_ABIS="2.*"
+PYTHON_DEPEND="2:2.7"
+RESTRICT_PYTHON_ABIS="3.*"
 
 inherit distutils python versionator
 
@@ -33,11 +33,7 @@ RDEPEND="${DEPEND}
 S="${WORKDIR}"/"${PN}"-"${PV}"
 
 pkg_setup() {
-	python_set_active_version 3
-}
-
-src_prepare() {
-	python_convert_shebangs -q -r 3 .
+	python_set_active_version 2
 }
 
 src_install() {
