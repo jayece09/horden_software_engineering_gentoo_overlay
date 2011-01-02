@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<repositories version="1.0">
+  <repo priority="50" quality="experimental" status="unofficial">
+    <name>horden_software_engineering_gentoo_overlay</name>
+    <description>Horden Software Engineering Gentoo Overlay</description>
+    <homepage>https://github.com/adamhorden/horden_software_engineering_gentoo_overlay</homepage>
+    <owner>
+      <email>adam.horden@horden.se</email>
+    </owner>
+    <source type="git">git://github.com/adamhorden/horden_software_engineering_gentoo_overlay.git</source>
+  </repo>
+</repositories>

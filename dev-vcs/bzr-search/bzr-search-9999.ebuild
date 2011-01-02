@@ -20,7 +20,7 @@ EBZR_REPO_URI="lp:bzr-search"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 ~x86"
 IUSE=""
 
 DEPEND="<dev-vcs/bzr-2.3"

@@ -15,7 +15,7 @@ SRC_URI="http://launchpad.net/${PN}/${PV_BASE}/${PV}/+download/${P}.tar.gz"
 
 LICENSE="GPL-2"
 SLOT="0"
-KEYWORDS=""
+KEYWORDS="~amd64 x86"
 IUSE="apache2 search"
 
 DEPEND=">=dev-python/paste-1.6
