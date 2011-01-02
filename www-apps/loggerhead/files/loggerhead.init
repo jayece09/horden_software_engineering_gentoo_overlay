@@ -11,8 +11,7 @@ LOG_FOLDER=/var/log/${NAME}
 
 [ -x /usr/bin/serve-branches ] || exit 0
 
-start() {
-	ebegin "Starting loggerhead"
+loggerhead_start() {
 	start-stop-daemon --pidfile ${PID_FILE} \
 														--make-pidfile \
 														--background \
@@ -23,13 +22,34 @@ start() {
 														${LOGGERHEAD_BRANCHES} \
 														${LOGGERHEAD_OPTIONS} \
 														2>/dev/null
-	eend $?
 }
 
-stop() {
-	ebegin "Stopping loggerhead"
+loggerhead_stop() {
 	start-stop-daemon --pidfile ${PID_FILE} \
 														--stop \
 														--quiet
-	eend $?
 }
+
+case "$1" in
+	start)
+		echo -n "Starting $DESCRIPTION: $NAME"
+		loggerhead_start
+		echo "."
+	;;
+	stop)
+		echo -n "Stopping $DESCRIPTION: $NAME"
+		loggerhead_stop
+		echo "."
+	;;
+  restart|force-reload)
+		echo -n "Restarting $DESCRIPTION: $NAME"
+		loggerhead_stop
+		sleep 1
+		loggerhead_start
+		echo "."
+	;;
+	*)
+		echo "Usage: $SCRIPT_NAME {start|stop|restart|force-reload}" >&2
+		exit 1
+	;;
+esac
