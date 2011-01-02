@@ -2,6 +2,11 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
+EAPI="3"
+PYTHON_DEPEND="3:3.1:3.2"
+SUPPORT_PYTHON_ABIS="1"
+RESTRICT_PYTHON_ABIS="2.*"
+
 inherit distutils versionator
 
 PV_BASE=$(get_version_component_range 1-2)
@@ -17,8 +22,6 @@ LICENSE="GPL-2"
 SLOT="0"
 KEYWORDS="~amd64 x86"
 IUSE="apache2 search"
-
-PYTHON_DEPEND="3:3.1:3.2"
 
 DEPEND=">=dev-python/paste-1.6
 	apache2? ( >=dev-python/pastedeploy-1.3 )"
