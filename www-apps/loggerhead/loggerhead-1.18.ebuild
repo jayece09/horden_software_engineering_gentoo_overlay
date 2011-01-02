@@ -2,7 +2,6 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-EAPI="3"
 PYTHON_DEPEND="2:2.7"
 RESTRICT_PYTHON_ABIS="3.*"
 
@@ -26,15 +25,11 @@ DEPEND=">=dev-python/paste-1.6
 	apache2? ( >=dev-python/pastedeploy-1.3 )"
 RDEPEND="${DEPEND}
 	<dev-vcs/bzr-2.3
-	dev-python/simpletal
+	=dev-python/simpletal-4.2
 	dev-python/simplejson
 	search? ( dev-vcs/bzr-search )"
 
 S="${WORKDIR}"/"${PN}"-"${PV}"
-
-pkg_setup() {
-	python_set_active_version 2
-}
 
 src_install() {
 	distutils_src_install
