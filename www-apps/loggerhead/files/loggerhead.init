@@ -3,11 +3,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-DESC="Loggerhead Bazaar Branch Browser"
+DESCRIPTION="Loggerhead Bazaar Branch Browser"
 NAME=loggerhead
-PIDFILE=/var/run/$NAME.pid
-SCRIPTNAME=/etc/init.d/$NAME
-LOGDIR=/var/log/loggerhead
+PID_FILE=/var/run/$NAME.pid
+SCRIPT_NAME=/etc/init.d/$NAME
+LOG_FOLDER=/var/log/$NAME
+
+[ -x /usr/bin/serve-branches ] || exit 0
 
 depend() {
 	need net
@@ -16,19 +18,19 @@ depend() {
 start() {
 	ebegin "Starting loggerhead"
 	
-	start-stop-daemon --pidfile ${PIDFILE} \
+	start-stop-daemon --pidfile ${PID_FILE} \
 														--make-pidfile \
 														--background \
 														--start \
-														--exec /usr/bin/serve-branches \
-														--log-folder ${LOGDIR} \
-														${LOGGERHEAD_OPTS} 2>/dev/null
+														--exec /usr/bin/serve-branches  -- --log-folder ${LOG_FOLDER} \
+														${LOGGERHEAD_OPTIONS}
+														# 2>/dev/null
 	eend $?
 }
 
 stop() {
 	ebegin "Stopping loggerhead"
-	start-stop-daemon --pidfile ${PIDFILE} \
+	start-stop-daemon --pidfile ${PID_FILE} \
 														--stop \
 														--quiet
 	eend $?
