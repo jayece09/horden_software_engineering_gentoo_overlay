@@ -9,26 +9,18 @@ PID_FILE=/var/run/${NAME}.pid
 SCRIPT_NAME=/etc/init.d/${NAME}
 LOG_FOLDER=/var/log/${NAME}
 
-# Gracefully exit if the package has been removed
 [ -x /usr/bin/serve-branches ] || exit 0
 
 start() {
 	ebegin "Starting loggerhead"
-	
-	start-stop-daemon --pidfile ${PID_FILE} \
-														--make-pidfile \
-														--background \
-														--start \
-														--exec /usr/bin/serve-branches  -- --log-folder ${LOG_FOLDER} \
-														${LOGGERHEAD_OPTIONS}
-														# 2>/dev/null
+	start-stop-daemon --start --quiet --background --make-pidfile --pidfile ${PID_FILE} \
+		--exec /usr/bin/serve-branches -- --log-folder=${LOG_FOLDER} \
+		${LOGGERHEAD_OPTIONS}
 	eend $?
 }
 
 stop() {
 	ebegin "Stopping loggerhead"
-	start-stop-daemon --pidfile ${PID_FILE} \
-														--stop \
-														--quiet
+	start-stop-daemon --stop --quiet --pidfile ${PID_FILE}
 	eend $?
 }
