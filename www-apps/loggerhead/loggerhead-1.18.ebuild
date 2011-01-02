@@ -21,7 +21,7 @@ IUSE="apache2 search"
 DEPEND=">=dev-python/paste-1.6
 	apache2? ( >=dev-python/pastedeploy-1.3 )"
 RDEPEND="${DEPEND}
-	<dev-vcs/bzr-2.2
+	<dev-vcs/bzr-2.3
 	dev-python/simpletal
 	dev-python/simplejson
 	search? ( dev-vcs/bzr-search )"
