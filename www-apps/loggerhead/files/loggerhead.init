@@ -19,10 +19,8 @@ start() {
 														--start \
 														--startas /usr/bin/serve-branches  \
 														--chuid loggerhead \
-														--chdir$ {LOGGERHEAD_BRANCHES} -- --log-folder ${LOG_FOLDER} \
-														--prefix=${LOGGERHEAD_PREFIX} \
-														--port=${LOGGERHEAD_PORT} \
-														{LOGGERHEAD_BRANCHES} \
+														--chdir ${LOGGERHEAD_BRANCHES} -- --log-folder ${LOG_FOLDER} \
+														${LOGGERHEAD_BRANCHES} \
 														${LOGGERHEAD_OPTIONS} \
 														2>/dev/null
 	eend $?
