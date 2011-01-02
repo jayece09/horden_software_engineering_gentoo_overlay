@@ -18,6 +18,8 @@ SLOT="0"
 KEYWORDS="~amd64 x86"
 IUSE="apache2 search"
 
+PYTHON_DEPEND="3:3.1:3.2"
+
 DEPEND=">=dev-python/paste-1.6
 	apache2? ( >=dev-python/pastedeploy-1.3 )"
 RDEPEND="${DEPEND}
