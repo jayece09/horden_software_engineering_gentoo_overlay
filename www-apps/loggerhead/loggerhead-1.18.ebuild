@@ -26,7 +26,7 @@ RDEPEND="${DEPEND}
 	dev-python/simplejson
 	search? ( dev-vcs/bzr-search )"
 
-S="${WORKDIR}"/${PN}
+S="${WORKDIR}"/"${PN}"-"${PV}"
 
 src_install() {
 	distutils_src_install
