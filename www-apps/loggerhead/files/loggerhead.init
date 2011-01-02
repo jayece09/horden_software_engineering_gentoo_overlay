@@ -13,14 +13,20 @@ LOG_FOLDER=/var/log/${NAME}
 
 start() {
 	ebegin "Starting loggerhead"
-	start-stop-daemon --start --quiet --background --make-pidfile --pidfile ${PID_FILE} \
-		--exec /usr/bin/serve-branches -- --log-folder=${LOG_FOLDER} \
-		${LOGGERHEAD_OPTIONS}
+	start-stop-daemon --pidfile ${PID_FILE} \
+														--make-pidfile \
+														--background \
+														--start \
+														--exec /usr/bin/serve-branches  -- --log-folder ${LOG_FOLDER} \
+														${LOGGERHEAD_OPTIONS} \
+														2>/dev/null
 	eend $?
 }
 
 stop() {
 	ebegin "Stopping loggerhead"
-	start-stop-daemon --stop --quiet --pidfile ${PID_FILE}
+	start-stop-daemon --pidfile ${PID_FILE} \
+														--stop \
+														--quiet
 	eend $?
 }
