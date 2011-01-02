@@ -16,20 +16,20 @@ depend() {
 start() {
 	ebegin "Starting loggerhead"
 	
-	start-stop-daemon --pidfile ${PIDFILE} \ 
-														--make-pidfile \ 
-														--background \ 
-														--start \ 
-														--exec /usr/bin/serve-branches \ 
-														--log-folder ${LOGDIR} \ 
+	start-stop-daemon --pidfile ${PIDFILE} \
+														--make-pidfile \
+														--background \
+														--start \
+														--exec /usr/bin/serve-branches \
+														--log-folder ${LOGDIR} \
 														${LOGGERHEAD_OPTS} 2>/dev/null
 	eend $?
 }
 
 stop() {
 	ebegin "Stopping loggerhead"
-	start-stop-daemon --pidfile ${PIDFILE} \ 
-														--stop \  
+	start-stop-daemon --pidfile ${PIDFILE} \
+														--stop \
 														--quiet
 	eend $?
 }
