@@ -5,9 +5,9 @@
 
 DESCRIPTION="Loggerhead Bazaar Branch Browser"
 NAME=loggerhead
-PID_FILE=/var/run/$NAME.pid
-SCRIPT_NAME=/etc/init.d/$NAME
-LOG_FOLDER=/var/log/$NAME
+PID_FILE=/var/run/${NAME}.pid
+SCRIPT_NAME=/etc/init.d/${NAME}
+LOG_FOLDER=/var/log/${NAME}
 
 # Gracefully exit if the package has been removed
 [ -x /usr/bin/serve-branches ] || exit 0
@@ -25,6 +25,7 @@ start() {
 														--background \
 														--start \
 														--exec /usr/bin/serve-branches  -- --log-folder ${LOG_FOLDER} \
+														--port 
 														${LOGGERHEAD_OPTIONS}
 														# 2>/dev/null
 	eend $?
