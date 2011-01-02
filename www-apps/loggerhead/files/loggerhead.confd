@@ -1,3 +1,0 @@
-# Additional options for Loggerhead start
-LOGGERHEAD_OPTIONS="--port 8080 /var/bzr"
-

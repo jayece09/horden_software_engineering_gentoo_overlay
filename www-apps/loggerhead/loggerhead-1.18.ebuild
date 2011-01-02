@@ -2,7 +2,13 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit distutils versionator
+[ -x /usr/bin/serve-branches ] || exit 0
+
+[ ! -f /etc/loggerhead/serve-branches.conf ] && exit 0
+
+. /etc/loggerhead/serve-branches.conf
+
+inherit eutils distutils versionator
 
 PV_BASE=$(get_version_component_range 1-2)
 
@@ -28,8 +34,16 @@ RDEPEND="${DEPEND}
 
 S="${WORKDIR}"/"${PN}"-"${PV}"
 
+pkg_setup() {
+	enewgroup loggerhead
+	enewuser loggerhead -1 -1 -1 loggerhead
+}
+
 src_install() {
 	distutils_src_install
+	
 	newinitd "${FILESDIR}"/loggerhead.init loggerhead
-	newconfd "${FILESDIR}"/loggerhead.confd loggerhead
+	
+	insinto /etc/loggerhead/
+	newins "${FILESDIR}/serve-branches.conf" serve-branches.conf || die
 }

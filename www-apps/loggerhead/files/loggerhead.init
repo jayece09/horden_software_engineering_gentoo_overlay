@@ -11,13 +11,21 @@ LOG_FOLDER=/var/log/${NAME}
 
 [ -x /usr/bin/serve-branches ] || exit 0
 
+[ ! -f /etc/loggerhead/serve-branches.conf ] && exit 0
+
+. /etc/loggerhead/serve-branches.conf
+
 start() {
 	ebegin "Starting loggerhead"
 	start-stop-daemon --pidfile ${PID_FILE} \
 														--make-pidfile \
 														--background \
 														--start \
-														--exec /usr/bin/serve-branches  -- --log-folder ${LOG_FOLDER} \
+														--start_as /usr/bin/serve-branches  \
+														--chuid loggerhead \
+														--chdir ${loggerhead_branches}-- --log-folder ${LOG_FOLDER} \
+														--prefix= ${loggerhead_prefix} \
+														--port= ${loggerhead_port} \	
 														${LOGGERHEAD_OPTIONS} \
 														2>/dev/null
 	eend $?
