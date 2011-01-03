@@ -20,8 +20,8 @@ start() {
 														--startas /usr/bin/serve-branches  \
 														--chuid loggerhead \
 														--chdir ${LOGGERHEAD_BRANCHES} -- --log-folder ${LOG_FOLDER} \
-														${LOGGERHEAD_BRANCHES} \
 														${LOGGERHEAD_OPTIONS} \
+														${LOGGERHEAD_BRANCHES} \
 														2>/dev/null
 	eend $?
 }
