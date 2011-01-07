@@ -12,7 +12,7 @@ LOG_FOLDER=/var/log/${NAME}
 [ -x /usr/bin/serve-branches ] || exit 0
 
 start() {
-	ebegin "Starting ${DESCRIPTION}: ${NAME}"
+	ebegin "Starting ${DESCRIPTION}"
 	start-stop-daemon --pidfile ${PID_FILE} \
 														--make-pidfile \
 														--background \
@@ -27,7 +27,7 @@ start() {
 }
 
 stop() {
-	ebegin "Stopping ${DESCRIPTION}: ${NAME}"
+	ebegin "Stopping ${DESCRIPTION}"
 	start-stop-daemon --pidfile ${PID_FILE} \
 														--stop \
 														--quiet
