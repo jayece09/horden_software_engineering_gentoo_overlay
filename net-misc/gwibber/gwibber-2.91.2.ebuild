@@ -2,14 +2,12 @@
 # Distributed under the terms of the GNU General Public License v2
 # $Header: $
 
-inherit distutils versionator
+inherit distutils
 
 EAPI="3"
 PYTHON_DEPEND="2"
 SUPPORT_PYTHON_ABIS="1"
 RESTRICT_PYTHON_ABIS="3.*"
-
-PV_BASE=$(get_version_component_range 1-2)
 
 DESCRIPTION="Open source social networking client for GNOME
  Gwibber is a social networking client for GNOME. It supports Facebook,
@@ -46,10 +44,6 @@ src_install() {
 	distutils_src_install
 
 	insinto /usr/share/dbus-1/services
-	doins com.Gwibber{.Service,Client}.service || die "Installing services failed."
-	doman gwibber{,-poster}.1 || die "Man page couldn't be installed."
-	elog "If your twitter account does not work try re-adding it."
-	elog "Facebook support is very flaky and will probably fail a lot."
-	elog "It's a structural problem with Facebook's OAuth implementation"
-	elog "and rate-limiting, nothing you can really fix."
+	doins com.Gwibber{.Service,Client}.service
+	doman gwibber{,-poster}.1
 }
