@@ -5,8 +5,7 @@
 inherit distutils eutils versionator
 
 EAPI="3"
-PYTHON_DEPEND="2"
-SUPPORT_PYTHON_ABIS="1"
+PYTHON_DEPEND="2:2.6"
 RESTRICT_PYTHON_ABIS="3.*"
 
 PV_BASE=$(get_version_component_range 1-2)

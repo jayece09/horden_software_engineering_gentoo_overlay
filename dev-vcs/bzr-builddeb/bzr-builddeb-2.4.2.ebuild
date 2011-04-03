@@ -5,8 +5,7 @@
 inherit bzr distutils
 
 EAPI="3"
-PYTHON_DEPEND="2"
-SUPPORT_PYTHON_ABIS="1"
+PYTHON_DEPEND="2:2.6"
 RESTRICT_PYTHON_ABIS="3.*"
 
 DESCRIPTION="Debian package management plugin for Bazaar
