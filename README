@@ -1,5 +1,0 @@
-eclipse-sdk-3.6.2.ebuild
-==================
-
-The eclipse-sdk-3.6.2.ebuild came from http://bugs.gentoo.org/325271 and
-will remain in this overlay till it gets added to the main Portage tree.
